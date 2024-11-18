@@ -3,14 +3,7 @@ package io.github.nfdeveloper.rh_software.entities.models;
 import java.io.Serializable;
 
 import io.github.nfdeveloper.rh_software.entities.enums.Status;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,24 +23,27 @@ public class Empresa implements Serializable{
 	private Long id;
 
     @Column(name = "cnpj", length = 120, unique = true)
-    public String cnpj;
+    private String cnpj;
 
     @Column(name = "razao_social", length = 120)
-    public String razaoSocial;
+    private String razaoSocial;
 
     @Column(name = "fantasia", length = 120)
-    public String fantasia;
+    private String fantasia;
 
-    public Endereco endereco;
-    public Contato contato;
+    @Embedded
+    private Endereco endereco;
+
+    @Embedded
+    private Contato contato;
 
     @Column(name = "porte", length = 20)
-    public String porte;
+    private String porte;
 
-    public Status status;
+    private Status status;
 
     @ManyToOne
 	@JoinColumn(name = "grupo_id")
-    public Grupo grupo;
+    private Grupo grupo;
 
 }

@@ -1,7 +1,9 @@
 package io.github.nfdeveloper.rh_software.entities.models;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 
+@Embeddable
 public class Endereco {
 
     @Column(name = "estado", length = 50)

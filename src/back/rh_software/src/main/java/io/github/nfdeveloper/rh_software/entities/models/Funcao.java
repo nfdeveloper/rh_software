@@ -30,24 +30,24 @@ public class Funcao implements Serializable{
 	private Long id;
 
     @Column(name = "nome", length = 80)
-    public String nome;
+    private String nome;
 
     @Column(name = "descricao", length = 500)
-    public String descricao;
+    private String descricao;
 
     @Column(name = "hr_semana")
-    public Double horasSemana;
+    private Double horasSemana;
 
     @Column(name = "hr_dia")
-    public Double horasDia;
+    private Double horasDia;
 
     @Column(name = "hr_intervalo")
-    public Double horasIntervalo;
+    private Double horasIntervalo;
 
-    public Status status;
+    private Status status;
 
     @ManyToOne
 	@JoinColumn(name = "grupo_id")
-    public Grupo grupo;
+    private Grupo grupo;
 
 }

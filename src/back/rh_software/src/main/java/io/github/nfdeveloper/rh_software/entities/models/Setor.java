@@ -30,14 +30,14 @@ public class Setor implements Serializable{
 	private Long id;
 
     @Column(name = "nome", length = 80)
-    public String nome;
+    private String nome;
 
     @Column(name = "descricao", length = 500)
-    public String descricao;
+    private String descricao;
 
-    public Status status;
+    private Status status;
 
     @ManyToOne
 	@JoinColumn(name = "grupo_id")
-    public Grupo grupo;
+    private Grupo grupo;
 }

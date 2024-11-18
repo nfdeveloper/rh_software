@@ -4,14 +4,7 @@ import java.io.Serializable;
 import java.io.ObjectInputFilter.Status;
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -62,8 +55,10 @@ public class Funcionario implements Serializable{
     @Column(name = "possui_filhos")
     private Boolean possuiFilhos;
 
+    @Embedded
     private Endereco endereco;
-    
+
+    @Embedded
     private Contato contato;
 
     private Status status;
