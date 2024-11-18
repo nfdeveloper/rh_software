@@ -65,14 +65,14 @@ public class Funcionario implements Serializable{
 
     @ManyToOne
 	@JoinColumn(name = "empresa_id")
-    public Empresa empresa;
+    private Empresa empresa;
 
     @ManyToOne
 	@JoinColumn(name = "setor_id")
-    public Setor setor;
+    private Setor setor;
 
     @ManyToOne
 	@JoinColumn(name = "funcao_id")
-    public Funcao funcao;
+    private Funcao funcao;
 
 }

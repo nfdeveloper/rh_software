@@ -40,5 +40,5 @@ public class Marcacao implements Serializable{
     
     @ManyToOne
 	@JoinColumn(name = "funcionario_id")
-    public Funcionario funcionario;
+    private Funcionario funcionario;
 }
