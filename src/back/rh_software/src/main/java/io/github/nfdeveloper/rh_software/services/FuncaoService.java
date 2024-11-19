@@ -1,6 +1,7 @@
 package io.github.nfdeveloper.rh_software.services;
 
 import io.github.nfdeveloper.rh_software.entities.models.Funcao;
+import io.github.nfdeveloper.rh_software.exceptions.EntityNotFoundException;
 import io.github.nfdeveloper.rh_software.respositories.FuncaoRepository;
 import io.github.nfdeveloper.rh_software.web.dtos.funcao.FuncaoCreateDTO;
 import io.github.nfdeveloper.rh_software.web.dtos.mappers.FuncaoMapper;
@@ -17,7 +18,9 @@ public class FuncaoService {
     private FuncaoRepository repository;
 
     private Funcao buscar(Long id){
-        return repository.findById(id).get();
+        return repository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Função não encontrada.")
+        );
     }
 
     public List<Funcao> listar(){

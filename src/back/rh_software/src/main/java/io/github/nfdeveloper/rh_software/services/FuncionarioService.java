@@ -1,6 +1,7 @@
 package io.github.nfdeveloper.rh_software.services;
 
 import io.github.nfdeveloper.rh_software.entities.models.Funcionario;
+import io.github.nfdeveloper.rh_software.exceptions.EntityNotFoundException;
 import io.github.nfdeveloper.rh_software.respositories.FuncionarioRepository;
 import io.github.nfdeveloper.rh_software.web.dtos.funcionario.FuncionarioCreateDTO;
 import io.github.nfdeveloper.rh_software.web.dtos.mappers.FuncionarioMapper;
@@ -17,7 +18,9 @@ public class FuncionarioService {
     private FuncionarioRepository repository;
 
     private Funcionario buscar(Long id){
-        return repository.findById(id).get();
+        return repository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Funcionário não encontrado.")
+        );
     }
 
     public List<Funcionario> listar(){

@@ -1,6 +1,7 @@
 package io.github.nfdeveloper.rh_software.services;
 
 import io.github.nfdeveloper.rh_software.entities.models.Usuario;
+import io.github.nfdeveloper.rh_software.exceptions.EntityNotFoundException;
 import io.github.nfdeveloper.rh_software.respositories.UsuarioRepository;
 import io.github.nfdeveloper.rh_software.web.dtos.mappers.UsuarioMapper;
 import io.github.nfdeveloper.rh_software.web.dtos.usuario.UsuarioCreateDTO;
@@ -17,7 +18,9 @@ public class UsuarioService {
     private UsuarioRepository repository;
 
     private Usuario buscar(Long id){
-        return repository.findById(id).get();
+        return repository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Usuário não encontrado.")
+        );
     }
 
     public List<Usuario> listar(){

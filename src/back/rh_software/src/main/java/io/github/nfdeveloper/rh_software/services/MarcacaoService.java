@@ -1,6 +1,7 @@
 package io.github.nfdeveloper.rh_software.services;
 
 import io.github.nfdeveloper.rh_software.entities.models.Marcacao;
+import io.github.nfdeveloper.rh_software.exceptions.EntityNotFoundException;
 import io.github.nfdeveloper.rh_software.respositories.MarcacaoRepository;
 import io.github.nfdeveloper.rh_software.web.dtos.mappers.MarcacaoMapper;
 import io.github.nfdeveloper.rh_software.web.dtos.marcacao.MarcacaoCreateDTO;
@@ -17,7 +18,9 @@ public class MarcacaoService {
     private MarcacaoRepository repository;
 
     private Marcacao buscar(Long id){
-        return repository.findById(id).get();
+        return repository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Marcação não encontrada.")
+        );
     }
 
     public List<Marcacao> listar(){

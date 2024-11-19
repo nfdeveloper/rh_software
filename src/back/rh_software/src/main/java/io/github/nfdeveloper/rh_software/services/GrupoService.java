@@ -2,6 +2,7 @@ package io.github.nfdeveloper.rh_software.services;
 
 import java.util.List;
 
+import io.github.nfdeveloper.rh_software.exceptions.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +17,9 @@ public class GrupoService {
     private GrupoRepository repository;
 
     private Grupo buscar(Long id){
-        return repository.findById(id).get();
+        return repository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Grupo não encontrado.")
+        );
     }
 
     public List<Grupo> listar(){
