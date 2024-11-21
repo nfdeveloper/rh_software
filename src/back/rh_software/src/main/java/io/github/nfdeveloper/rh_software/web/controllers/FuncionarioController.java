@@ -19,11 +19,6 @@ public class FuncionarioController {
     @Autowired
     private FuncionarioService service;
 
-    @GetMapping
-    public ResponseEntity<List<Funcionario>> listar(HttpServletRequest request){
-        return ResponseEntity.status(HttpStatus.OK).body(service.listar(request));
-    }
-
     @GetMapping("{id}")
     @PreAuthorize("hasRole('TI') OR #id == authentication.principal.id")
     public ResponseEntity<Funcionario> buscar(@PathVariable Long id, HttpServletRequest request){

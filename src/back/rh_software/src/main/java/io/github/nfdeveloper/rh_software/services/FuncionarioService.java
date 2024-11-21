@@ -1,5 +1,6 @@
 package io.github.nfdeveloper.rh_software.services;
 
+import io.github.nfdeveloper.rh_software.entities.models.Empresa;
 import io.github.nfdeveloper.rh_software.entities.models.Funcao;
 import io.github.nfdeveloper.rh_software.entities.models.Funcionario;
 import io.github.nfdeveloper.rh_software.entities.models.Grupo;
@@ -29,15 +30,16 @@ public class FuncionarioService {
         );
     }
 
-    private Funcionario buscarPorGrupo(Long id, Grupo grupo){
-        return repository.findByIdAndGrupo(id, grupo).orElseThrow(
+    private Funcionario buscarPorEmpresa(Long id, Empresa empresa){
+        return repository.findByIdAndEmpresa(id, empresa).orElseThrow(
                 () -> new EntityNotFoundException("Funcionário não encontrado ou não pertence a esse grupo.")
         );
     }
 
-    public List<Funcionario> listar(HttpServletRequest request){
-        return repository.findByGrupo(jwtService.findGrupoByToken(request));
-    }
+    // TODO - Método para Listagem ADMIN
+//    public List<Funcionario> listar(HttpServletRequest request){
+//        return repository.findByGrupo(jwtService.findGrupoByToken(request));
+//    }
 
     @Transactional
     public Funcionario criar(FuncionarioCreateDTO dto){
@@ -45,12 +47,12 @@ public class FuncionarioService {
     }
 
     public Funcionario buscarPorId(Long id, HttpServletRequest request){
-        return buscarPorGrupo(id, jwtService.findGrupoByToken(request));
+        return buscarPorEmpresa(id, jwtService.findUsuarioByToken(request).getFuncionario().getEmpresa());
     }
 
     @Transactional
     public void remover(Long id, HttpServletRequest request){
-        Funcionario funcionario = buscarPorGrupo(id, jwtService.findGrupoByToken(request));
+        Funcionario funcionario = buscarPorEmpresa(id, jwtService.findUsuarioByToken(request).getFuncionario().getEmpresa());
         repository.delete(funcionario);
     }
 }
