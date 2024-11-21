@@ -11,4 +11,6 @@ import lombok.Setter;
 @Setter
 public class JwtToken {
     private String token;
+    private String usuario;
+    private String permisao;
 }

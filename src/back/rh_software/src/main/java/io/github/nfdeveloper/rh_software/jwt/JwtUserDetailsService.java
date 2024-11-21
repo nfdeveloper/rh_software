@@ -1,8 +1,9 @@
 package io.github.nfdeveloper.rh_software.jwt;
 
-import io.github.nfdeveloper.rh_software.entities.enums.Role;
+import io.github.nfdeveloper.rh_software.entities.models.Grupo;
 import io.github.nfdeveloper.rh_software.entities.models.Usuario;
 import io.github.nfdeveloper.rh_software.services.UsuarioService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,7 +23,18 @@ public class JwtUserDetailsService implements UserDetailsService {
     }
 
     public JwtToken getTokenAuthenticated(String username){
-        Role role = usuarioService.buscarRolePorUsename(username);
-        return JwtUtils.createToken(username, role.name());
+        Usuario usuario = usuarioService.buscarPorUsername(username);
+        String token = JwtUtils.createToken(username, usuario.getPermissao().name());
+        return new JwtToken(token, usuario.getUsername(), usuario.getPermissao().name());
+    }
+
+    public Usuario findUsuarioByToken(HttpServletRequest request){
+        String token = request.getHeader("Authorization").substring(JwtUtils.JWT_BEARER.length());
+        return usuarioService.buscarPorUsername(JwtUtils.getUsernameFromToken(token));
+    }
+
+    public Grupo findGrupoByToken(HttpServletRequest request){
+        String token = request.getHeader("Authorization").substring(JwtUtils.JWT_BEARER.length());
+        return usuarioService.buscarPorUsername(JwtUtils.getUsernameFromToken(token)).getFuncionario().getEmpresa().getGrupo();
     }
 }

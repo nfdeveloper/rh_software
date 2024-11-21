@@ -19,5 +19,4 @@ public class FuncaoCreateDTO {
     private Double horasDia;
     private Double horasIntervalo;
     private Status status = Status.ATIVO;
-    private Long grupoId;
 }

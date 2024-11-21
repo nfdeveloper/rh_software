@@ -21,5 +21,4 @@ public class EmpresaCreateDTO {
     private Contato contato;
     private String porte;
     private Status status = Status.ATIVO;
-    private Long grupoId;
 }

@@ -16,5 +16,4 @@ public class SetorCreateDTO {
     private String nome;
     private String descricao;
     private Status status;
-    private Long grupoId;
 }
