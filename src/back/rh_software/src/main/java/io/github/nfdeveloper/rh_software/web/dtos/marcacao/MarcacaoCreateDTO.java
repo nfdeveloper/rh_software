@@ -20,7 +20,7 @@ public class MarcacaoCreateDTO {
     private String localizacao;
 
     @JsonDeserialize(using = CustomLocalDateTimeDeserializer.class)
-    private LocalDateTime dataMarcacao;
+    private LocalDateTime dataMarcacao = LocalDateTime.now();
     private StatusMarcacao status = StatusMarcacao.EM_ANALISE;
     private Long funcionarioId;
 }
