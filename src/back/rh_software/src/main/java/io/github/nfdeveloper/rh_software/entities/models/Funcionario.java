@@ -32,6 +32,9 @@ public class Funcionario implements Serializable{
     @Column(name = "cpf", length = 20, unique = true)
     private String cpf;
 
+    @Column(name = "sexo_nascimento", length = 80)
+    private String sexoNascimento;
+
     @Column(name = "dt_nascimento")
     private LocalDateTime dataNascimento;
 

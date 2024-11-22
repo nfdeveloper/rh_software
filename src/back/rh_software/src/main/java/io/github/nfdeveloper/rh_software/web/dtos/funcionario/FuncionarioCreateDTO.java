@@ -21,6 +21,7 @@ public class FuncionarioCreateDTO {
     private String nomeCompleto;
     private String sobrenome;
     private String cpf;
+    private String sexoNascimento;
 
     @JsonDeserialize(using = CustomLocalDateTimeDeserializer.class)
     private LocalDateTime dataNascimento;
