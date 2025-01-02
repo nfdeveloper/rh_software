@@ -1,5 +1,6 @@
 package io.github.nfdeveloper.rh_software.services;
 
+import io.github.nfdeveloper.rh_software.entities.enums.Status;
 import io.github.nfdeveloper.rh_software.entities.models.Funcao;
 import io.github.nfdeveloper.rh_software.entities.models.Grupo;
 import io.github.nfdeveloper.rh_software.exceptions.EntityNotFoundException;
@@ -36,6 +37,10 @@ public class FuncaoService {
 
     public List<Funcao> listar(HttpServletRequest request){
         return repository.findByGrupo(jwtService.findGrupoByToken(request));
+    }
+
+    public List<Funcao> listarAtivos(HttpServletRequest request){
+        return repository.findByGrupoAndStatus(jwtService.findGrupoByToken(request), Status.ATIVO);
     }
 
     @Transactional

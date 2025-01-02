@@ -2,6 +2,7 @@ package io.github.nfdeveloper.rh_software.services;
 
 import java.util.List;
 
+import io.github.nfdeveloper.rh_software.entities.enums.PorteEmpresa;
 import io.github.nfdeveloper.rh_software.entities.models.Grupo;
 import io.github.nfdeveloper.rh_software.entities.models.Usuario;
 import io.github.nfdeveloper.rh_software.exceptions.EntityNotFoundException;
@@ -36,6 +37,18 @@ public class EmpresaService {
         );
     }
 
+    private PorteEmpresa validarPortePorQuantidadeFuncionario(Long quantidade){
+        if(quantidade >= 10 && quantidade <= 99){
+            return PorteEmpresa.PEQUENO_PORTE;
+        }
+        else if(quantidade >= 100 && quantidade <= 499){
+            return PorteEmpresa.MEDIO_PORTE;
+        }
+        else {
+            return PorteEmpresa.GRANDE_PORTE;
+        }
+    }
+
     public List<Empresa> listar(HttpServletRequest request){
         return repository.findByGrupo(jwtService.findGrupoByToken(request));
     }
@@ -43,6 +56,7 @@ public class EmpresaService {
     @Transactional
     public Empresa criar(HttpServletRequest request, EmpresaCreateDTO dto){
         Empresa empresa = EmpresaMapper.toEmpresa(dto);
+        empresa.setPorte(validarPortePorQuantidadeFuncionario(dto.getQuantidadeFuncionarios()));
         empresa.setGrupo(jwtService.findGrupoByToken(request));
         return repository.save(empresa);
     }

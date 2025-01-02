@@ -1,0 +1,38 @@
+<form #f="ngForm" (ngSubmit)="salvar()" [formGroup]="grupoForms">
+    <div class="sublinha">
+        <label for="nome">Nome:</label>
+        <input id="nome" type="text" formControlName="nome" pInputText  [style]="{'width':'100%'}"/>
+        <small style="color: #CB010D;" *ngIf="!grupoForms.controls?.['nome']?.valid && grupoForms.controls?.['nome']?.touched">
+            Nome obrigatório.
+        </small>
+    </div>
+
+    <div class="containerVencimento">
+        <div class="sublinha" [style]="{'width': '30%'}">
+            <label for="telefone">Telefone:</label>
+            <p-inputMask mask="(99) 9999-9999" id="telefone" type="text" formControlName="telefone" [style]="{'width':'100%'}" />
+            <small style="color: #CB010D;" *ngIf="!grupoForms.controls?.['telefone']?.valid && grupoForms.controls?.['telefone']?.touched">
+                Telefone obrigatório.
+            </small>
+        </div>
+        <div class="sublinha" [style]="{'width': '30%', 'margin-left': '0.5rem'}">
+            <label for="celular">Celular:</label>
+            <p-inputMask mask="(99) 99999-9999" id="celular" type="text" formControlName="celular" [style]="{'width':'100%'}" />
+            <small style="color: #CB010D;" *ngIf="!grupoForms.controls?.['celular']?.valid && grupoForms.controls?.['celular']?.touched">
+                Celular obrigatório.
+            </small>
+        </div>
+        <div class="sublinha" [style]="{'width': '37%', 'margin-left': '0.5rem'}">
+            <label for="email">Email:</label>
+            <input id="email" type="email" formControlName="email" pInputText  [style]="{'width':'100%'}"/>
+            <small style="color: #CB010D;" *ngIf="!grupoForms.controls?.['email']?.valid && grupoForms.controls?.['email']?.touched">
+                Email obrigatório.
+            </small>
+        </div>
+    </div>
+
+    <div class="btn">
+        <p-button [style]="{'background-color':'#00A77E', 'border-color':'#00A77E'}" 
+        label="Salvar" type="submit" [disabled]="!grupoForms.valid" />
+    </div>
+</form>

@@ -7,6 +7,7 @@ export class EmpresaCreate{
     razaoSocial?: string;
     fantasia?: string;
     porte?: string;
-    endereco?: Endereco;
-    contato?: Contato;
+    quantidadeFuncionarios?: number;
+    endereco: Endereco = new Endereco();
+    contato: Contato = new Contato();
 }

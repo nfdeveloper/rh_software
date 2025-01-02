@@ -2,6 +2,7 @@ package io.github.nfdeveloper.rh_software.entities.models;
 
 import java.io.Serializable;
 
+import io.github.nfdeveloper.rh_software.entities.enums.Status;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,12 +20,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "grp")
-public class Grupo implements Serializable{
+public class Grupo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "nome", length = 120)
     private String nome;
@@ -37,4 +38,6 @@ public class Grupo implements Serializable{
 
     @Column(name = "email", length = 80)
     private String email;
+
+    private Status status;
 }

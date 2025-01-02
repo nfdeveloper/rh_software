@@ -2,6 +2,7 @@ package io.github.nfdeveloper.rh_software.entities.models;
 
 import java.io.Serializable;
 
+import io.github.nfdeveloper.rh_software.entities.enums.PorteEmpresa;
 import io.github.nfdeveloper.rh_software.entities.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -37,8 +38,11 @@ public class Empresa implements Serializable{
     @Embedded
     private Contato contato;
 
-    @Column(name = "porte", length = 20)
-    private String porte;
+    @Column(name = "porte")
+    private PorteEmpresa porte;
+
+    @Column(name = "qtd_func")
+    private Long quantidadeFuncionarios;
 
     private Status status;
 

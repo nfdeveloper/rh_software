@@ -1,0 +1,18 @@
+<div class="card" id="nav" 
+[style]="{'height':'4rem', 'box-shadow':'0px 1px 0px 0px grey'}">
+    <div>
+        <p-sidebar showCloseIcon="false" [(visible)]="sidebarVisible">
+            <div class="card flex justify-content-center">
+                <p-menu [model]="items" />
+            </div>
+        </p-sidebar>
+        <p-button (onClick)="sidebarVisible = true" [style]="{'margin-bottom':'0.3rem', 'color':'#00A77E','background-color':'white', 'border-color':'white'}" icon="pi pi-align-justify"/>
+        
+    </div>
+    <div>
+        <h3>HRConnect</h3>
+    </div>
+    <div class="logout">
+        <!-- <p-button (onClick)="logout()" [style]="{'margin-top':'0.7rem','color':'#3B377C','background-color':'white', 'border-color':'white'}" icon="pi pi-sign-out"/> -->
+    </div> 
+</div>

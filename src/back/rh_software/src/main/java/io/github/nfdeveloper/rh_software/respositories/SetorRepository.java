@@ -1,5 +1,6 @@
 package io.github.nfdeveloper.rh_software.respositories;
 
+import io.github.nfdeveloper.rh_software.entities.enums.Status;
 import io.github.nfdeveloper.rh_software.entities.models.Grupo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -13,4 +14,6 @@ public interface SetorRepository extends JpaRepository<Setor, Long>{
     Optional<Setor> findByIdAndGrupo(Long id, Grupo grupo);
 
     List<Setor> findByGrupo(Grupo grupo);
+
+    List<Setor> findByGrupoAndStatus(Grupo grupo, Status status);
 }

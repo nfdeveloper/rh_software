@@ -1,0 +1,32 @@
+<div class="main">
+    <div class="conteudo">
+        <div class="container-imagem">
+            imagem
+        </div>
+        <div class="formulario">
+            <h3 class="titulo">Entre com sua conta</h3>
+            <form #f="ngForm" class="formulario-content" (ngSubmit)="entrar()" [formGroup]="loginForms">
+                <div class="sublinha">
+                    <label for="user">Usuário:</label>
+                    <input id="user" type="text" formControlName="username" pInputText [style]="{'width':'100%'}">
+                    <small style="color: #CB010D;" *ngIf="!loginForms.controls?.['username']?.valid && loginForms.controls?.['username']?.touched">
+                        Usuário obrigatório.
+                    </small>
+                </div>
+                <div class="sublinha">
+                    <label for="pass" >Senha:</label>
+                    <input id="pass" type="password" formControlName="password" pInputText  [style]="{'width':'100%'}"/>
+                    <small style="color: #CB010D;" *ngIf="!loginForms.controls?.['password']?.valid && loginForms.controls?.['password']?.touched">
+                        Senha obrigatória.
+                    </small>
+                </div>
+                <div class="btn">
+                    <p-button [style]="{'background-color':'#00A77E', 'border':'#00A77E'}" label="Entrar" type="submit" [disabled]="!loginForms.valid" />
+                </div>
+            </form>
+            <div class="contato">
+                <span >Não possui uma conta? Entre em contato conosco.</span>
+            </div>
+        </div>
+    </div>
+</div>

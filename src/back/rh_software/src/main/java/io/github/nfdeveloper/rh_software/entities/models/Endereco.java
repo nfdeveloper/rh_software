@@ -26,4 +26,7 @@ public class Endereco {
 
     @Column(name = "ponto_referencia", length = 200)
     public String pontoReferencia;
+    
+    @Column(name = "complemento", length = 200)
+    public String complemento;
 }

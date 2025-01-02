@@ -1,0 +1,61 @@
+<div [style]="{'width':'100%'}">
+    <p-toast></p-toast>
+    <p-confirmDialog></p-confirmDialog>
+</div>
+<div class="main">
+    <div class="flex justify-content-center align-items-center" [style]="{'margin':'0 5rem'}">
+        <div class="title">
+            <h2>Empresas</h2>
+            <p-button 
+            (onClick)="criarEmpresa()" 
+            label="Novo" 
+            icon="pi pi-plus" 
+            [style]="{'width':'6.5rem','height':'2.5rem', 'background-color':'#00A77E', 'border-color':'#00A77E'}"/>
+        </div>
+        <p-table
+            [value]="empresas"
+            [style]="{'margin': '0 2rem'}"
+            styleClass="p-datatable-striped"
+            currentPageReportTemplate="Exibindo {first} a {last} de {totalRecords} registros"
+            [rowHover]="true"
+            [rows]="10"
+            [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[5, 10, 20]"
+            [paginator]="true"  
+        >
+        <ng-template pTemplate="header">
+            <tr>
+                <th class="tb-center">Nº</th>
+                <th class="tb-center">Razão Social</th>
+                <th class="tb-center">Cnpj</th>
+                <th class="tb-center">Porte</th>
+                <th class="tb-center">Status</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-empresa>
+            <tr>
+                <td class="tb-center">{{empresa.id}}</td>
+                <td class="tb-center">{{empresa.razaoSocial}}</td>
+                <td class="tb-center">{{empresa.cnpj}}</td>
+                <td class="tb-center">{{empresa.porte}}</td>
+                <td class="tb-center">{{empresa.status}}</td>
+                <td>
+                    <p-button
+                        pTooltip="Editar" 
+                        tooltipPosition="left"
+                        (onClick)="editarEmpresa()" 
+                        icon="pi pi-pencil" 
+                        [style]="{'width':'2.5rem','height':'2.5rem','margin-right':'0.5rem','background-color':'#00A77E', 'border-color':'#00A77E'}"/>
+                    <p-button 
+                        pTooltip="Excluir"
+                        (onClick)="confirmarDesativacao(empresa)" 
+                        tooltipPosition="right"
+                        icon="pi pi-trash"  
+                        [style]="{'width':'2.5rem','height':'2.5rem','background-color':'#00A77E', 'border-color':'#00A77E'}"/>
+                </td>
+            </tr>
+        </ng-template> 
+        </p-table>
+    </div>
+</div>

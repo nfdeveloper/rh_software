@@ -20,5 +20,6 @@ public class EmpresaCreateDTO {
     private Endereco endereco;
     private Contato contato;
     private String porte;
+    private Long quantidadeFuncionarios;
     private Status status = Status.ATIVO;
 }

@@ -1,11 +1,9 @@
 package io.github.nfdeveloper.rh_software.jwt;
 
-import io.github.nfdeveloper.rh_software.entities.models.Usuario;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 
-import java.util.Collection;
+import io.github.nfdeveloper.rh_software.entities.models.Usuario;
 
 public class JwtUserDetails extends User {
 

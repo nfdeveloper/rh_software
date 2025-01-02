@@ -1,9 +1,7 @@
 package io.github.nfdeveloper.rh_software.services;
 
 import io.github.nfdeveloper.rh_software.entities.models.Empresa;
-import io.github.nfdeveloper.rh_software.entities.models.Funcao;
 import io.github.nfdeveloper.rh_software.entities.models.Funcionario;
-import io.github.nfdeveloper.rh_software.entities.models.Grupo;
 import io.github.nfdeveloper.rh_software.exceptions.EntityNotFoundException;
 import io.github.nfdeveloper.rh_software.jwt.JwtUserDetailsService;
 import io.github.nfdeveloper.rh_software.respositories.FuncionarioRepository;
@@ -13,7 +11,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 @Service
@@ -36,14 +33,41 @@ public class FuncionarioService {
         );
     }
 
+    private Funcionario calculaImc(Funcionario funcionario){
+        double imc = funcionario.getPeso()/(funcionario.getAltura() * funcionario.getAltura());
+        if(imc < 18.5){
+            funcionario.setImcDescricao("Magreza");
+        }
+        else if(imc >= 18.5 && imc <= 24.9){
+            funcionario.setImcDescricao("Normal");
+        }
+        else if(imc >= 25 && imc <= 29.9){
+            funcionario.setImcDescricao("Sobrepeso");
+        }
+        else if(imc >= 30 && imc <= 34.9){
+            funcionario.setImcDescricao("Obesidade Grau I");
+        }
+        else if(imc >= 35 && imc <= 39.9){
+            funcionario.setImcDescricao("Obesidade Grau II");
+        }
+        else if(imc >= 40){
+            funcionario.setImcDescricao("Obesidade Grau III");
+        }
+
+        funcionario.setImc(imc);
+
+        return funcionario;
+    }
+
     // TODO - Método para Listagem ADMIN
-//    public List<Funcionario> listar(HttpServletRequest request){
-//        return repository.findByGrupo(jwtService.findGrupoByToken(request));
-//    }
+    public List<Funcionario> listar(HttpServletRequest request){
+        return repository.findByGrupo(jwtService.findGrupoByToken(request));
+    }
 
     @Transactional
     public Funcionario criar(FuncionarioCreateDTO dto){
-        return repository.save(FuncionarioMapper.toFuncionario(dto));
+        Funcionario funcionario = calculaImc(FuncionarioMapper.toFuncionario(dto));
+        return repository.save(funcionario);
     }
 
     public Funcionario buscarPorId(Long id, HttpServletRequest request){

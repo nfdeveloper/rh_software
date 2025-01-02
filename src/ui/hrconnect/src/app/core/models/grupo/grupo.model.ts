@@ -4,4 +4,5 @@ export class Grupo {
     telefone?: string;
     celular?: string;
     email?: string;
+    status?: string;
 }

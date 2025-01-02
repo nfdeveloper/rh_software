@@ -1,0 +1,25 @@
+::ng-deep .p-menu {
+    padding: 0.5rem 0;
+    background: #ffffff;
+    color: #4b5563;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    width: 17.5rem;
+}
+
+.user {
+    margin-top: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.logout {
+    display: flex;
+    flex-direction: row;
+
+}
+
+#nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

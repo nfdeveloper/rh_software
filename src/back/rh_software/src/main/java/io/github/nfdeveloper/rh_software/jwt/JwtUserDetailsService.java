@@ -35,6 +35,6 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     public Grupo findGrupoByToken(HttpServletRequest request){
         String token = request.getHeader("Authorization").substring(JwtUtils.JWT_BEARER.length());
-        return usuarioService.buscarPorUsername(JwtUtils.getUsernameFromToken(token)).getFuncionario().getEmpresa().getGrupo();
+        return usuarioService.buscarPorUsername(JwtUtils.getUsernameFromToken(token)).getGrupo();
     }
 }

@@ -1,0 +1,167 @@
+<div class="main">
+    
+    <div class="formulario">
+        <div class="titulo">
+            <h2>Nova Empresa</h2>
+        </div>
+        <form #f="ngForm" (ngSubmit)="salvar()" [formGroup]="empresaForms" >
+            <div class="linha">
+                <div class="sublinha" [style]="{'width':'40%'}">
+                    <label for="razaoSocial">Razão Social:</label>
+                    <input id="razaoSocial" type="text" formControlName="razaoSocial" pInputText  [style]="{'width':'100%'}"/>
+                    <small style="color: #CB010D;" *ngIf="!empresaForms.controls?.['razaoSocial']?.valid && empresaForms.controls?.['razaoSocial']?.touched">
+                        Razão Social obrigatória.
+                    </small>
+                </div>
+                <div class="sublinha" [style]="{'width':'35%', 'margin-left':'0.4rem'}">
+                    <label for="fantasia">Fantasia:</label>
+                    <input id="fantasia" type="text" formControlName="fantasia" pInputText  [style]="{'width':'100%'}"/>
+                    <small style="color: #CB010D;" *ngIf="!empresaForms.controls?.['fantasia']?.valid && empresaForms.controls?.['fantasia']?.touched">
+                        Fantasia obrigatória.
+                    </small>
+                </div>
+                <div class="sublinha" [style]="{'width':'25%', 'margin-left':'0.4rem'}">
+                    <label for="cnpj">Cnpj:</label>
+                    <p-inputMask mask="99.999.999/9999-99" id="cnpj" type="text" formControlName="cnpj" [style]="{'width':'100%'}" />
+                    <small style="color: #CB010D;" *ngIf="!empresaForms.controls?.['cnpj']?.valid && empresaForms.controls?.['cnpj']?.touched">
+                        Cnpj obrigatório.
+                    </small>
+                </div>
+            </div>
+
+            <div class="linha">
+                <div class="sublinha" [style]="{'width':'25%'}">
+                    <label for="quantidadeFuncionarios">Quantidade Funcionarios:</label>
+                    <input id="quantidadeFuncionarios" type="text" formControlName="quantidadeFuncionarios" pInputText  [style]="{'width':'100%'}"/>
+                    <small style="color: #CB010D;" *ngIf="!empresaForms.controls?.['quantidadeFuncionarios']?.valid && empresaForms.controls?.['quantidadeFuncionarios']?.touched">
+                        Quantidade de Funcionários obrigatória.
+                    </small>
+                </div>
+                <div class="sublinha" [style]="{'width': '10%', 'margin-left':'0.4rem'}">
+                    <label for="cep">Cep:</label>
+                    <p-inputMask mask="99999-999" id="cep" type="text" formControlName="cep" [style]="{'width':'100%'}" />
+                    <small style="color: #CB010D;" *ngIf="!empresaForms.controls?.['cep']?.valid && empresaForms.controls?.['cep']?.touched">
+                        Cep obrigatório.
+                    </small>
+                </div>
+                <div class="sublinha" [style]="{'width': '20%', 'margin-left':'0.4rem'}">
+                    <label for="estado">Estado:</label>
+                    <input id="estado" type="text" formControlName="estado" pInputText  [style]="{'width':'100%'}"/>
+                    <small style="color: #CB010D;" *ngIf="!empresaForms.controls?.['estado']?.valid && empresaForms.controls?.['estado']?.touched">
+                        Estado obrigatório.
+                    </small>
+                </div>
+                <div class="sublinha" [style]="{'width': '25%', 'margin-left':'0.4rem'}">
+                    <label for="cidade">Cidade:</label>
+                    <input id="cidade" type="text" formControlName="cidade" pInputText  [style]="{'width':'100%'}"/>
+                    <small style="color: #CB010D;" *ngIf="!empresaForms.controls?.['cidade']?.valid && empresaForms.controls?.['cidade']?.touched">
+                        Cidade obrigatória.
+                    </small>
+                </div>
+                <div class="sublinha" [style]="{'width': '20%', 'margin-left':'0.4rem'}">
+                    <label for="bairro">Bairro:</label>
+                    <input id="bairro" type="text" formControlName="bairro" pInputText  [style]="{'width':'100%'}"/>
+                    <small style="color: #CB010D;" *ngIf="!empresaForms.controls?.['bairro']?.valid && empresaForms.controls?.['bairro']?.touched">
+                        Bairro obrigatória.
+                    </small>
+                </div>
+            </div>
+           
+            <div class="linha">
+                <div class="sublinha">
+                    <label for="rua">Rua:</label>
+                    <input id="rua" type="text" formControlName="rua" pInputText  [style]="{'width':'100%'}"/>
+                    <small style="color: #CB010D;" *ngIf="!empresaForms.controls?.['rua']?.valid && empresaForms.controls?.['rua']?.touched">
+                        Rua obrigatória.
+                    </small>
+                </div>
+                <div class="sublinha" [style]="{'width': '5%', 'margin-left':'0.4rem'}">
+                    <label for="numero">Nº:</label>
+                    <input id="numero" type="text" formControlName="numero" pInputText  [style]="{'width':'100%'}"/>
+                    <small style="color: #CB010D;" *ngIf="!empresaForms.controls?.['numero']?.valid && empresaForms.controls?.['numero']?.touched">
+                        Número obrigatório.
+                    </small>
+                </div>
+                <div class="sublinha" [style]="{'width': '20%', 'margin-left':'0.4rem'}">
+                    <label for="complemento">Complemento:</label>
+                    <input id="numero" type="text" formControlName="complemento" pInputText  [style]="{'width':'100%'}"/>
+                </div>
+                <div class="sublinha" [style]="{'width': '20%', 'margin-left':'0.4rem'}">
+                    <label for="pontoReferencia">Ponto de Refência:</label>
+                    <input id="pontoReferencia" type="text" formControlName="pontoReferencia" pInputText  [style]="{'width':'100%'}"/>
+                </div>
+            </div>
+            
+            <h4>Contato</h4>
+            <div class="linha">
+                <div class="sublinha" [style]="{'width': '30%'}">
+                    <label for="telefone">Telefone:</label>
+                    <p-inputMask mask="(99) 9999-9999" id="telefone" type="text" formControlName="telefone1" [style]="{'width':'100%'}" />
+                    <small style="color: #CB010D;" *ngIf="!empresaForms.controls?.['telefone1']?.valid && empresaForms.controls?.['telefone1']?.touched">
+                        Telefone obrigatório.
+                    </small>
+                </div>
+                <div class="sublinha" [style]="{'width': '30%', 'margin-left':'0.4rem'}">
+                    <label for="telefone2">Telefone2:</label>
+                    <p-inputMask mask="(99) 9999-9999" id="telefone2" type="text" formControlName="telefone2" [style]="{'width':'100%'}" />
+                </div>
+                <div class="sublinha" [style]="{'width': '30%', 'margin-left':'0.4rem'}">
+                    <label for="telefone3">Telefone3:</label>
+                    <p-inputMask mask="(99) 9999-9999" id="telefone2" type="text" formControlName="telefone3" [style]="{'width':'100%'}" />
+                    
+                </div>
+                <div class="sublinha" [style]="{'width': '30%', 'margin-left':'0.4rem'}">
+                    <label for="telefone4">Telefone4:</label>
+                    <p-inputMask mask="(99) 9999-9999" id="telefone4" type="text" formControlName="telefone4" [style]="{'width':'100%'}" />
+                </div>
+            </div>
+            <div class="linha">
+                <div class="sublinha" [style]="{'width': '30%'}">
+                    <label for="celular">Celular:</label>
+                    <p-inputMask mask="(99) 99999-9999" id="celular" type="text" formControlName="celular1" [style]="{'width':'100%'}" />
+                    <small style="color: #CB010D;" *ngIf="!empresaForms.controls?.['celular1']?.valid && empresaForms.controls?.['celular1']?.touched">
+                        Celular obrigatório.
+                    </small>
+                </div>
+                <div class="sublinha" [style]="{'width': '30%', 'margin-left':'0.4rem'}">
+                    <label for="celular2">Celular2:</label>
+                    <p-inputMask mask="(99) 99999-9999" id="celular2" type="text" formControlName="celular2" [style]="{'width':'100%'}" />
+                </div>
+                <div class="sublinha" [style]="{'width': '30%', 'margin-left':'0.4rem'}">
+                    <label for="celular3">Celular3:</label>
+                    <p-inputMask mask="(99) 99999-9999" id="celular3" type="text" formControlName="celular3" [style]="{'width':'100%'}" />
+                </div>
+                <div class="sublinha" [style]="{'width': '30%', 'margin-left':'0.4rem'}">
+                    <label for="celular4">Celular4:</label>
+                    <p-inputMask mask="(99) 99999-9999" id="celular4" type="text" formControlName="celular4" [style]="{'width':'100%'}" />
+                </div>
+            </div>
+            <div class="linha">
+                <div class="sublinha" [style]="{'width': '30%'}">
+                    <label for="email">Email:</label>
+                    <input id="email" type="text" formControlName="email1" pInputText  [style]="{'width':'100%'}"/>
+                    <small style="color: #CB010D;" *ngIf="!empresaForms.controls?.['email1']?.valid && empresaForms.controls?.['email1']?.touched">
+                        Email obrigatório.
+                    </small>
+                </div>
+                <div class="sublinha" [style]="{'width': '30%', 'margin-left':'0.4rem'}">
+                    <label for="email2">Email2:</label>
+                    <input id="email2" type="text" formControlName="email2" pInputText  [style]="{'width':'100%'}"/>
+                </div>
+                <div class="sublinha" [style]="{'width': '30%', 'margin-left':'0.4rem'}">
+                    <label for="email">Email3:</label>
+                    <input id="email3" type="text" formControlName="email3" pInputText  [style]="{'width':'100%'}"/>
+                </div>
+                <div class="sublinha" [style]="{'width': '30%', 'margin-left':'0.4rem'}">
+                    <label for="email4">Email4:</label>
+                    <input id="email4" type="text" formControlName="email4" pInputText  [style]="{'width':'100%'}"/>
+                </div>
+            </div>      
+            
+            <div class="btn">
+                <p-button label="Salvar" (onClick)="salvar()" [disabled]="!empresaForms.valid"/>
+            </div>
+            
+        </form>
+    </div>
+</div>

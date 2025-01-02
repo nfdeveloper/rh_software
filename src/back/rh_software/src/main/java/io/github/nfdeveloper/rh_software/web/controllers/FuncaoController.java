@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/funcoes")
+@CrossOrigin("*")
 public class FuncaoController {
 
     @Autowired
@@ -21,6 +22,11 @@ public class FuncaoController {
     @GetMapping
     public ResponseEntity<List<Funcao>> listar(HttpServletRequest request){
         return ResponseEntity.status(HttpStatus.OK).body(service.listar(request));
+    }
+
+    @GetMapping("/ativos")
+    public ResponseEntity<List<Funcao>> listarAtivos(HttpServletRequest request){
+        return ResponseEntity.status(HttpStatus.OK).body(service.listarAtivos(request));
     }
 
     @GetMapping("{id}")

@@ -6,4 +6,5 @@ export class Endereco {
     numero?: string;
     cep?: string;
     pontoReferencia?: string;
+    complemento?: string;
 }

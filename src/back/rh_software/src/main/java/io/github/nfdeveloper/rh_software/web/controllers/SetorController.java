@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/setores")
+@CrossOrigin("*")
 public class SetorController {
 
     @Autowired
@@ -21,6 +22,11 @@ public class SetorController {
     @GetMapping
     public ResponseEntity<List<Setor>> listar(HttpServletRequest request){
         return ResponseEntity.status(HttpStatus.OK).body(service.listar(request));
+    }
+
+    @GetMapping("/ativos")
+    public ResponseEntity<List<Setor>> listarAtivos(HttpServletRequest request){
+        return ResponseEntity.status(HttpStatus.OK).body(service.listarAtivos(request));
     }
 
     @GetMapping("{id}")

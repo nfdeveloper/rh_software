@@ -2,6 +2,7 @@ package io.github.nfdeveloper.rh_software.services;
 
 import java.util.List;
 
+import io.github.nfdeveloper.rh_software.entities.enums.Status;
 import io.github.nfdeveloper.rh_software.entities.models.Funcao;
 import io.github.nfdeveloper.rh_software.entities.models.Grupo;
 import io.github.nfdeveloper.rh_software.exceptions.EntityNotFoundException;
@@ -38,6 +39,10 @@ public class SetorService {
 
     public List<Setor> listar(HttpServletRequest request){
         return repository.findByGrupo(jwtService.findGrupoByToken(request));
+    }
+
+    public List<Setor> listarAtivos(HttpServletRequest request){
+        return repository.findByGrupoAndStatus(jwtService.findGrupoByToken(request), Status.ATIVO);
     }
 
     @Transactional

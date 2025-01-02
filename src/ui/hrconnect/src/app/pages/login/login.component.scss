@@ -1,0 +1,55 @@
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    .conteudo {
+        height: 23rem;
+        width: 65%;
+        // background-color: grey;
+        margin-top: 6rem;
+        padding: 0.5rem;
+
+        display: flex;
+        flex-direction: row;
+
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 3px grey;
+
+
+        .container-imagem {
+            height: 100%;
+            width: 50%;
+
+        }
+
+        .formulario {
+            width: 45%;
+
+            .titulo {
+                text-align: center;
+            }
+
+            .contato {
+                text-align: center;
+                margin-top: 0.5rem;
+            }
+        }
+
+        .formulario-content {
+            margin-top: 3rem;
+            width: 100%;
+
+
+            .btn {
+                text-align: center;
+                margin-top: 1rem;
+            }
+        }
+
+        
+    }
+}

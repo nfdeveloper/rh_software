@@ -7,6 +7,7 @@ export class Empresa {
     razaoSocial?: string;
     fantasia?: string;
     porte?: string;
+    quantidadeFuncionarios?: number;
     endereco?: Endereco;
     contato?: Contato;
 }
